@@ -27,7 +27,7 @@ const Login = () => {
                                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password</label>
                                 <input type="password" name="password" id="password" placeholder="••••••••" className=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" required=""/>
                             </div>
-                            <button type="submit" className="w-full text-black bg-primary-600 bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2 text-center ">Sign up</button>
+                            <button type="submit" className="w-full text-black bg-primary-600 bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2 text-center ">Sign In</button>
                             <p className="text-sm font-normal text-black ">
                                 Don’t have an account yet? <Link to="/signup" className="font-medium text-black hover:underline dark">Sign up</Link>
                             </p>

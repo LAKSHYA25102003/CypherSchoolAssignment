@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SideBar from '../BasicLayouts/SideBar'
+import { useDispatch } from 'react-redux'
+import { createUser } from '../../Redux/user/userAction'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
+    const dispatch=useDispatch();
+    const navigate=useNavigate();
+    const [user,setUser] = useState({name:"",email:"",password:""});
+    const detectChange=(e)=>{
+        setUser({...user,[e.target.name]:e.target.value})
+    }
+    const clearUser=()=>{
+        setUser({name:"",email:"",password:""})
+        navigate("/login")
+    }
+    const submit=(e)=>{
+        e.preventDefault();
+        dispatch(createUser(user,clearUser));
+    }
     return (
         <div className="flex bg-white">
             <SideBar />
@@ -13,22 +30,22 @@ const Signup = () => {
                             <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-black">
                                 Create New Account.
                             </h1>
-                            <form class="space-y-4 md:space-y-6 ">
+                            <form class="space-y-4 md:space-y-6 " onSubmit={submit}>
                                 <div>
                                     <label for="first_name" class="block mb-2 text-sm font-medium text-black ">Name</label>
-                                    <input type="text" name="first_name" id="first_name" class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
+                                    <input type="text" name="name" value={user.name} onChange={detectChange} id="first_name" class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
                                 </div>
                                 
 
                                 <div>
                                     <label for="email" class="block mb-2 text-sm font-medium text-black ">Your email</label>
-                                    <input type="email" name="email" id="email" class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
+                                    <input type="email" name="email" value={user.email} onChange={detectChange} id="email" class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
                                 </div>
                                 <div>
-                                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password</label>
-                                    <input type="password" name="password" id="password" placeholder="••••••••" class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
+                                    <label for="password"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password</label>
+                                    <input value={user.password} onChange={detectChange} type="password" name="password" id="password" placeholder="••••••••" class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
                                 </div>
-                                <button type="submit" class="w-full text-black bg-primary-600 bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Sign in</button>
+                                <button type="submit" class="w-full text-black bg-primary-600 bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Sign Up</button>
                                 <p class="text-sm font-normal text-black ">
                                     Already have an account ? <Link to="/login" class="font-medium text-black hover:underline dark">Sign in</Link>
                                 </p>
