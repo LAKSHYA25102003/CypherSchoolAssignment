@@ -13,25 +13,36 @@ import Login from './Components/Auth/Login';
 import Signup from './Components/Auth/Signup';
 import { Toaster } from 'react-hot-toast';
 import Profile from './Pages/Profile';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchUser } from './Redux/user/userAction';
+
 
 // import { Home } from '@mui/icons-material';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      dispatch(fetchUser());
+    }
+  }, [])
   return (
     <>
-    <Toaster />
-    <Router>
-      <Routes>
-        <Route path='' element={<Home />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/signup' element={<Signup />}></Route>
-        <Route path='/profile' element={<Profile />}></Route>
-        {/* <Route path='/verify-account' element={<LoginOtp />}></Route>
+
+      <Toaster />
+      <Router>
+        <Routes>
+          <Route path='' element={<Home />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/signup' element={<Signup />}></Route>
+          <Route path='/profile' element={<Profile />}></Route>
+          {/* <Route path='/verify-account' element={<LoginOtp />}></Route>
         <Route path='/forgot-password' element={<ForgotPassword />}></Route>
         <Route path='/set-new-password/:token' element={<SetNewPassword />}></Route>
-        <Route path='/create-password/:token' element={<CreateNewPassword />}></Route> */} 
-      </Routes>
-    </Router>
+        <Route path='/create-password/:token' element={<CreateNewPassword />}></Route> */}
+        </Routes>
+      </Router>
     </>
   );
 }

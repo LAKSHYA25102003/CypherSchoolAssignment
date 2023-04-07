@@ -9,8 +9,10 @@ import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import NavBar from './NavBar';
 import DropDownOptions from './DropDownOptions';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SideBar = () => {
+    const navigate=useNavigate();
     return (
         <>
             <div className="hidden min-[1024px]:block bg-white ">
@@ -35,15 +37,14 @@ const SideBar = () => {
                         <TourOutlinedIcon fontSize='medium' />
                         <div className='text-[10px]'>Tour</div>
                     </div>
-                    {localStorage.getItem('token') ? <div className="item1">
+                    {localStorage.getItem('token') ? <div className="item1 cursor-pointer"  onClick={()=>{navigate("/profile");console.log("click")}}>
                         <AccountBoxOutlinedIcon fontSize='medium' />
-                        <div className='text-[10px]'>Profile</div>
+                        <div className='text-[10px] '>Profile</div>
                     </div> :
-                        <div className="item1">
+                        <div className="item1 cursor-pointer"  onClick={()=>{navigate("/login")}}>
                             <LoginOutlinedIcon fontSize='medium' />
                             <div className='text-[10px]'>Login</div>
                         </div>}
-
                 </div>
             </div>
             <div className="onless1024px min-[1024px]:hidden ">
@@ -61,11 +62,11 @@ const SideBar = () => {
                             <PersonAddAltIcon className="ml-3" fontSize='medium' />
                             <div className='text-[10px]'>Following</div>
                         </div>
-                        {localStorage.getItem('token') ? <div className="item1">
+                        {localStorage.getItem('token') ? <div className="item1 cursor-pointer"  onClick={()=>{navigate("/profile");console.log("click")}}>
                             <AccountBoxOutlinedIcon fontSize='medium' />
-                            <div className='text-[10px]'>Profile</div>
+                            <div className='text-[10px] cursor-pointer' onClick={()=>{navigate("/profile")}}>Profile</div>
                         </div> : 
-                        <Link to="/login"><div className="item1">
+                        <Link to="/login"><div className="item1 cursor-pointer"  onClick={()=>{navigate("/login")}}>
                             <LoginOutlinedIcon fontSize='medium' />
                             <div className='text-[10px]'>Login</div>
                         </div></Link>}

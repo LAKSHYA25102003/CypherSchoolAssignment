@@ -54,5 +54,44 @@ const updateUserDetails = async(req,res)=>{
 //     }
 // }
 
+const getUser=async (req,res)=>{
+    try{
+        const email = req.user.email;
+        const isuser = await User.findOne({email}).select("-password");
+        if(!isuser){
+            throw new Error("User not found.")
+        }
+        res.status(200).json({success:true,user:isuser});
 
-module.exports = {updateUserDetails}
+    }catch(err){
+        res.status(400).json({success:false, err:err.toString()})
+    }
+}
+
+
+const updateProfilePic = async(req,res)=>{
+    try{
+        const email = req.user.email;
+        
+        const isuser = await User.findOne({email});
+        
+        if(!isuser){
+            throw new Error("User not found.");
+        }
+
+        const newPath = req.file.path.replace(/\\/g, '/');
+        
+
+        const updatedUser = await User.findByIdAndUpdate(isuser._id,{profileImageUrl:newPath});
+
+        if(isuser.profileImageUrl!=="uploads/download_default_image.png"){
+            fs.unlinkSync(isuser.profileImageUrl);
+        }
+        res.status(200).json({success:true,url:newPath})
+
+    }catch(err){
+        res.status(400).json({success:false, err:err.toString()})
+    }
+}
+
+module.exports = {updateUserDetails,getUser,updateProfilePic}

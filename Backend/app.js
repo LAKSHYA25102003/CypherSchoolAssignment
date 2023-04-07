@@ -8,10 +8,13 @@ const mongoose = require("mongoose");
 const { authRouter } = require("./Routes/authRoutes");
 const { userRouter } = require("./Routes/userRouter");
 const BASE_URL = process.env.BASE_URL;
+const cors=require("cors")
 
 
 app.use(express.json());
 app.use(morgan("dev"));
+app.use('/uploads', express.static('uploads'));
+app.use(cors());
 
 
 

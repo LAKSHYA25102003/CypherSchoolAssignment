@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "../Components/BasicLayouts/NavBar";
 import SideBar from "../Components/BasicLayouts/SideBar";
 import ProfileBox from "../Components/ProfileBox";
@@ -8,43 +8,57 @@ import ProfessionalInformation from "../Components/ProfessionalInformation";
 import PasswordChange from "../Components/PasswordChange";
 import Map from "../Components/Map";
 import Interest from "../Components/Interest";
+import { useNavigate } from "react-router-dom";
+import showToast from "../Utils/showToast";
 
 function Profile() {
-  return (
-    <div>
-      <div className="flex  w-[100%] flex-col ">
-        <NavBar />
-        <div className="flex w-[100%] fixed top-[67px]">
-          <div className="hidden md:block">
-            <SideBar />
-          </div>
-          <div className="w-[100%] left-[62px] right-0 bg-[#edf2fa]">
-            <ProfileBox />
-            <div className="main-container w-[100%] h-[30%] md:h-[40%] overflow-y-auto pb-[20px]">
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("token") === null) {
+      showToast({
+        msg: "Please login first.",
+        type: "error",
+      });
+      navigate("/login");
+    }
+  }, []);
+  if (localStorage.getItem("token") !== null) {
+    return (
+      <div>
+        <div className="flex  w-[100%] flex-col ">
+          <NavBar />
+          <div className="flex w-[100%] fixed top-[67px]">
+            <div className="hidden md:block">
+              <SideBar />
+            </div>
+            <div className="w-[100%] left-[62px] right-0 bg-[#edf2fa]">
+              <ProfileBox />
+              <div className="main-container w-[100%] h-[30%] md:h-[40%] overflow-y-auto pb-[20px]">
                 <div className="about-me">
-                    <UserAboutme/>
+                  <UserAboutme />
                 </div>
                 <div className="map">
-                    <Map/>
+                  <Map />
                 </div>
                 <div className="on-the-web">
-                    <OnTheWeb/>
+                  <OnTheWeb />
                 </div>
                 <div className="on-the-web">
-                    <ProfessionalInformation/>
+                  <ProfessionalInformation />
                 </div>
                 <div className="password">
-                    <PasswordChange/>
+                  <PasswordChange />
                 </div>
                 <div className="Interest">
-                    <Interest/>
+                  <Interest />
                 </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } 
 }
 
 export default Profile;

@@ -1,7 +1,7 @@
 
 const express = require("express");
 const { fetchUser } = require("../Middlewares/fetchUser");
-const { updateUserDetails } = require("../Controllers/userController");
+const { updateUserDetails,getUser } = require("../Controllers/userController");
 const multer = require("multer");
 const userRouter = express.Router();
 
@@ -32,6 +32,7 @@ const upload =
 
 
 userRouter.patch("/user/updateinfo",fetchUser,updateUserDetails)
+userRouter.get("/user/getUser",fetchUser,getUser)
 userRouter.patch("user/updateprofilepic",fetchUser,upload.single("profilepic"),)
 
 module.exports = {userRouter}

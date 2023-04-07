@@ -27,7 +27,7 @@ const User = new mongoose.Schema({
     interest:[{type:String,default:[]}],
     followers:[{type:mongoose.Schema.Types.ObjectId, default:[]}],
     followings:[{type:mongoose.Schema.Types.ObjectId, default:[]}],
-    profileImageUrl:{type:String,default:""}
+    profileImageUrl:{type:String,required:true,default:"uploads/download_default_image.png"}
 })
 
 module.exports = mongoose.model('User',User);
