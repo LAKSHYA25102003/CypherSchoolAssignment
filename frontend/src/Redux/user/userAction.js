@@ -101,3 +101,39 @@ export const fetchUser=()=>async (dispatch)=>{
 }
 
 
+
+
+export const updateDetails=(data)=>async (dispatch)=>{
+    
+    try{
+       dispatch(fetchUserLoading());
+        let result=await fetch(`${process.env.REACT_APP_BASE_URL}/user/updateinfo`,{
+            method:"post",
+            headers:{
+                "Content-Type":"application/json",
+                "auth-token":localStorage.getItem("token")
+            },
+            body:JSON.stringify(data)
+        })
+        const response=await result.json();
+        if(response.success)
+        {
+            dispatch(fetchUserSuccess(response.user));
+            showToast({
+                msg:"Successfully saved",
+                type:"success"
+            })
+        }
+        else
+        {
+            dispatch(fetchUserFail(response.message));
+        }
+        
+    }catch(error){
+        console.log(error.message)
+        dispatch(fetchUserFail(error.message))
+        
+    }
+}
+
+

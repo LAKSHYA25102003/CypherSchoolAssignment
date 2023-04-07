@@ -31,8 +31,8 @@ const upload =
 
 
 
-userRouter.patch("/user/updateinfo",fetchUser,updateUserDetails)
+userRouter.post("/user/updateinfo",fetchUser,updateUserDetails)
 userRouter.get("/user/getUser",fetchUser,getUser)
-userRouter.patch("user/updateprofilepic",fetchUser,upload.single("profilepic"),)
+userRouter.post("user/updateprofilepic",fetchUser,upload.single("profilepic"),)
 
 module.exports = {userRouter}

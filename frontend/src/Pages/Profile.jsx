@@ -10,9 +10,11 @@ import Map from "../Components/Map";
 import Interest from "../Components/Interest";
 import { useNavigate } from "react-router-dom";
 import showToast from "../Utils/showToast";
+import { useSelector } from "react-redux";
 
 function Profile() {
   const navigate = useNavigate();
+  const {user} = useSelector(store=>{return store.user})
   useEffect(() => {
     if (localStorage.getItem("token") === null) {
       showToast({
@@ -22,7 +24,7 @@ function Profile() {
       navigate("/login");
     }
   }, []);
-  if (localStorage.getItem("token") !== null) {
+  if (localStorage.getItem("token") !== null&&user!==null) {
     return (
       <div>
         <div className="flex  w-[100%] flex-col ">

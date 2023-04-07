@@ -27,9 +27,19 @@ function ProfileEditModal({ setModal, user }) {
                   alt=""
                 />
                 <div className="absolute bottom-[-10px] w-[100%]  flex justify-center items-center z-0">
-                  <div className=" w-[25px] h-[25px] cursor-pointer  rounded-[50%] flex justify-center items-center bg-gray-700 text-white">
-                    <EditIcon fontSize="small" />
-                  </div>
+                  <label
+                    htmlFor="files"
+                    className="w-[25px] h-[25px] cursor-pointer rounded-[50%] flex  justify-center items-center bg-gray-700 text-white"
+                  >
+                    <div className="">
+                      <EditIcon fontSize="small" />
+                    </div>
+                  </label>
+                  <input
+                    id="files"
+                    type="file"
+                    className="hidden w-[25px] h-[25px] cursor-pointer  rounded-[50%]  justify-center items-center bg-gray-700 text-white"
+                  ></input>
                 </div>
               </div>
             </div>

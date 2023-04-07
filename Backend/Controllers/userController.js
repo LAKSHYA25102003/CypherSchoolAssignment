@@ -19,6 +19,8 @@ const updateUserDetails = async(req,res)=>{
             Instagram:req.body.instagramid?req.body.instagramid:isuser.onTheWeb.Instagram,
             Website:req.body.website?req.body.website:isuser.onTheWeb.Website,
         }
+
+        
         
         const proffInfo = {
             highestEdu:req.body.highestEdu?req.body.highestEdu:isuser.proffInfo.highestEdu,
@@ -26,10 +28,13 @@ const updateUserDetails = async(req,res)=>{
         }
 
         const updatedUser = await User.findByIdAndUpdate(isuser._id,{
-            onTheWeb,proffInfo
+            onTheWeb,proffInfo,
+            aboutMe:req.body.aboutMe?req.body.aboutMe:isuser.aboutMe
         })
 
-        res.status(200).json({success:true,details:"User updated."});
+        const u=await User.findById(isuser._id);
+
+        res.status(200).json({success:true,details:"User updated.",user:u});
 
     }catch(err){
         res.status(400).json({success:false, err:err.toString()})
