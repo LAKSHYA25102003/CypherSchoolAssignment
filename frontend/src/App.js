@@ -16,6 +16,7 @@ import Profile from './Pages/Profile';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchUser } from './Redux/user/userAction';
+import Followers from './Pages/Followers';
 
 
 // import { Home } from '@mui/icons-material';
@@ -37,6 +38,7 @@ function App() {
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/followers' element={<Followers />}></Route>
           {/* <Route path='/verify-account' element={<LoginOtp />}></Route>
         <Route path='/forgot-password' element={<ForgotPassword />}></Route>
         <Route path='/set-new-password/:token' element={<SetNewPassword />}></Route>

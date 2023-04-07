@@ -3,8 +3,10 @@ import { useSelector } from "react-redux";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 import ProfileEditModal from "./ProfileEditModal";
+import { useNavigate } from "react-router-dom";
 
 function ProfileBox() {
+  const navigate=useNavigate();
   const [modal, setModal] = useState(false);
   const { user } = useSelector((store) => {
     return store.user;
@@ -32,7 +34,7 @@ function ProfileBox() {
               <p>{user.email}</p>
             </div>
           </div>
-          <div className="hidden md:block text-[20px] font-medium">
+          <div className="hidden md:block text-[20px] font-medium cursor-pointer" onClick={()=>{navigate("/followers")}}>
             {user.followers.length} followers
           </div>
         </div>

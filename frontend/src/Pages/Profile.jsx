@@ -33,9 +33,9 @@ function Profile() {
             <div className="hidden md:block">
               <SideBar />
             </div>
-            <div className="w-[100%] left-[62px] right-0 bg-[#edf2fa]">
+            <div  className="w-[100%] left-[62px] right-0 bg-[#edf2fa]">
               <ProfileBox />
-              <div className="main-container w-[100%] h-[25%] md:h-[35%] overflow-y-auto pb-[20px]">
+              <div style={{height:"calc(100vh - 167px)"}} className="main-container w-[100%] h-[100%] overflow-y-auto pb-[20px]">
                 <div className="about-me">
                   <UserAboutme />
                 </div>
