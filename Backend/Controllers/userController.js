@@ -29,7 +29,8 @@ const updateUserDetails = async(req,res)=>{
 
         const updatedUser = await User.findByIdAndUpdate(isuser._id,{
             onTheWeb,proffInfo,
-            aboutMe:req.body.aboutMe?req.body.aboutMe:isuser.aboutMe
+            aboutMe:req.body.aboutMe?req.body.aboutMe:isuser.aboutMe,
+            interest:req.body.interest?req.body.interest:isuser.interest
         })
 
         const u=await User.findById(isuser._id);

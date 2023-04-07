@@ -23,6 +23,9 @@ const userSlice=createSlice({
         fetchUserFail:(state,{payload})=>{
             state.isLoading=false;
             state.error=payload
+        },
+        setField:(state,{payload})=>{
+            state.user.interest=payload
         }
     }
 
@@ -30,6 +33,6 @@ const userSlice=createSlice({
 
 const {reducer,actions}=userSlice;
 
-export const {fetchUserLoading,fetchUserSuccess,fetchUserFail}=actions;
+export const {fetchUserLoading,fetchUserSuccess,fetchUserFail,setField}=actions;
 
 export default reducer;

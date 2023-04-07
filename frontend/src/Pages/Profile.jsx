@@ -35,7 +35,7 @@ function Profile() {
             </div>
             <div className="w-[100%] left-[62px] right-0 bg-[#edf2fa]">
               <ProfileBox />
-              <div className="main-container w-[100%] h-[30%] md:h-[40%] overflow-y-auto pb-[20px]">
+              <div className="main-container w-[100%] h-[25%] md:h-[35%] overflow-y-auto pb-[20px]">
                 <div className="about-me">
                   <UserAboutme />
                 </div>

@@ -3,6 +3,7 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 
 function ProfileEditModal({ setModal, user }) {
+  
   return (
     <div className="w-[100%] h-[100%]">
       <div className="flex  justify-center items-center h-[100%] w-[100%] md:w-[60%] mx-auto ">
@@ -74,7 +75,10 @@ function ProfileEditModal({ setModal, user }) {
                   />
                 </div>
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end gap-2 pt-2">
+                <button onClick={()=>{setModal(false)}} className="bg-black text-[18px] font-medium text-white p-[2px] px-[10px] rounded-md">
+                  Cancel
+                </button>
                 <button className="bg-[#f3912e] text-[18px] font-medium text-white p-[2px] px-[10px] rounded-md">
                   Save
                 </button>

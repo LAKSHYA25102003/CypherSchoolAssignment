@@ -27,10 +27,10 @@ const signup = async(req,res)=>{
             password:hash
         })
 
-        res.status(200).json({success:true,details:"Account Created Successfully"});
+        res.status(200).json({success:true,message:"Account Created Successfully"});
 
     }catch(err){
-        res.status(400).json({success:false,err:err.toString()});
+        res.status(400).json({success:false,message:err.toString()});
     }
 }
 
@@ -57,7 +57,7 @@ const login = async(req,res)=>{
         res.status(200).json({success:true, token:token,user:isuser});
 
     }catch(err){
-        res.status(400).json({success:false,err:err.toString()});
+        res.status(400).json({success:false,message:err.toString()});
     }
 }
 
@@ -83,11 +83,12 @@ const changePassword = async(req,res)=>{
         const newhashedpassword = await bcrypt.hash(req.body.newpassword,saltRound);
 
         const updatedUser = await User.findByIdAndUpdate(isuser._id,{password:newhashedpassword})
+        const u= await User.findById(isuser._id);
         
-        res.status(200).json({success:true, details:"password updated successfully"});
+        res.status(200).json({success:true, message:"password updated successfully",user:u});
 
     }catch(err){
-        res.status(400).json({success:false,err:err.toString()});
+        res.status(400).json({success:false,message:err.toString()});
     }   
 }
 

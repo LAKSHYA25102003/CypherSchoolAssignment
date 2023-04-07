@@ -32,7 +32,7 @@ function ProfileBox() {
               <p>{user.email}</p>
             </div>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden md:block text-[20px] font-medium">
             {user.followers.length} followers
           </div>
         </div>

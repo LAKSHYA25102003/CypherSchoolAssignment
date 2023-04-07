@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import UpdatePasswordModal from "./UpdatePasswordModal";
 
 
+
 function PasswordChange() {
     const [modal,setModal] = useState(false);
   return (
@@ -10,18 +11,20 @@ function PasswordChange() {
         <div className="text-[20px] font-bold flex justify-between">
           <p>PASSWORD & SECURITY</p>
           <button onClick={()=>{setModal(true)}} className="bg-[#f3912e] text-[18px] font-medium text-white p-[2px] px-[10px] rounded-md">
-            Edit
+            Change
           </button>
         </div>
         <div>
           <div className="flex flex-col gap-1">
             <p className="text-[18px] font-medium">Password</p>
-            <div className="flex gap-1 border-[1px] border-gray-500 rounded-md p-[5px] bg-white">
+            <div className="flex  gap-1 border-[1px] border-gray-500 rounded-md p-[5px] bg-white">
               <input
                 type="password"
+                disabled
                 className="outline-none w-[100%] px-[5px]"
-                value={"abcd"}
+                value={"abcdefg"}
               />
+              
             </div>
           </div>
         </div>
