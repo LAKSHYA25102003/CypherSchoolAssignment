@@ -25,9 +25,9 @@ function ProfileBox() {
           <div className="flex justify-center items-center gap-[20px]">
             <div className="image relative ">
               <img
-                src={`http://localhost:5000/${user.profileImageUrl}`}
+                src={`${process.env.REACT_APP_BASE_URL}/${user.profileImageUrl}`}
                 className="w-[70px] h-[70px] rounded-[50%] border-[1px]"
-                alt=""
+                alt={user.name}
               />
               <div className="absolute bottom-[-10px] w-[100%]  flex justify-center items-center z-0">
                 <div className=" w-[25px] h-[25px] cursor-pointer  rounded-[50%] flex justify-center items-center bg-gray-700 text-white" onClick={()=>{setModal(true)}}>

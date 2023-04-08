@@ -59,8 +59,8 @@ const Signup = () => {
                       onChange={detectChange}
                       id="first_name"
                       class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="name@company.com"
-                      required=""
+                      placeholder="Name"
+                      required
                     />
                   </div>
 
@@ -79,7 +79,7 @@ const Signup = () => {
                       id="email"
                       class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="name@company.com"
-                      required=""
+                      required
                     />
                   </div>
                   <div>
@@ -98,7 +98,7 @@ const Signup = () => {
                       id="password"
                       placeholder="••••••••"
                       class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      required=""
+                      required
                     />
                   </div>
                   <button

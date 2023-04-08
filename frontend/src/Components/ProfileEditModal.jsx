@@ -44,7 +44,7 @@ function ProfileEditModal({ setModal, user }) {
                   />
                 ) : (
                   <img
-                    src={`http://localhost:5000/${user.profileImageUrl}`}
+                    src={`${process.env.REACT_APP_BASE_URL}/${user.profileImageUrl}`}
                     className="w-[120px] h-[120px] rounded-[50%] border-[1px]"
                     alt=""
                   />

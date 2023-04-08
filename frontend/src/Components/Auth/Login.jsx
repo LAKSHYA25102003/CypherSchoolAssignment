@@ -58,8 +58,8 @@ const Login = () => {
                         name="email"
                         id="email"
                         className=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="name@company.com"
-                        required=""
+                        placeholder="Name"
+                        required
                       />
                     </div>
                     <div>
@@ -78,7 +78,7 @@ const Login = () => {
                         id="password"
                         placeholder="••••••••"
                         className=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required=""
+                        required
                       />
                     </div>
                     <button

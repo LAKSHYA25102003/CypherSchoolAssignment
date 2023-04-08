@@ -60,7 +60,10 @@ function Profile() {
         </div>
       </div>
     );
-  } 
+  } else
+  {
+    return <div className="text-center text-[30px] font-medium p-[30px]">Loading...</div>
+  }
 }
 
 export default Profile;
