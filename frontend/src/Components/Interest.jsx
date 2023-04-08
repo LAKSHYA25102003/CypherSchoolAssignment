@@ -10,7 +10,7 @@ function Interest() {
   return (
     <div className="px-[40px] py-[20px] ">
       <div className="border-b-[1.5px] border-gray-400 flex flex-col gap-[20px] pb-[30px]">
-        <div className="text-[20px] font-bold flex justify-between">
+        <div className="text-[20px] font-bold flex justify-between items-center">
           <p>INTERESTS</p>
           <button
             onClick={() => {

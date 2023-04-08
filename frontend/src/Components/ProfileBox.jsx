@@ -25,7 +25,7 @@ function ProfileBox() {
           <div className="flex justify-center items-center gap-[20px]">
             <div className="image relative ">
               <img
-                src={`${process.env.REACT_APP_BASE_URL}/${user.profileImageUrl}`}
+                src={`https://backendcipher.onrender.com/${user.profileImageUrl}`}
                 className="w-[70px] h-[70px] rounded-[50%] border-[1px]"
                 alt={user.name}
               />
