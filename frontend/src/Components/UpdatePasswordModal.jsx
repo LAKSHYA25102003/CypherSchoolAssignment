@@ -4,14 +4,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updatePassword } from "../Redux/user/userAction";
 import showToast from "../Utils/showToast";
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 function UpdatePasswordModal({ setModal }) {
   const dispatch = useDispatch();
-  const [showNewPassword,setshowNewPassword] = useState(false)
-  const [showConPassword,setshowConPassword] = useState(false)
-  const [showCurrPassword,setshowCurrPassword] = useState(false)
+  const [showNewPassword, setshowNewPassword] = useState(false);
+  const [showConPassword, setshowConPassword] = useState(false);
+  const [showCurrPassword, setshowCurrPassword] = useState(false);
   const [data, setData] = useState({
     old_password: "",
     newpassword: "",
@@ -29,7 +28,7 @@ function UpdatePasswordModal({ setModal }) {
       });
       return;
     }
-    dispatch(updatePassword(data,setModal));
+    dispatch(updatePassword(data, setModal));
   };
   return (
     <div className="w-[100%] h-[100%]">
@@ -55,42 +54,63 @@ function UpdatePasswordModal({ setModal }) {
                 <p className="text-[18px] font-medium">Current Password</p>
                 <div className="flex justify-between gap-1 border-[1px] border-gray-500 rounded-md p-[5px] bg-white">
                   <input
+                    minLength={5}
                     onChange={detectChange}
                     value={data.old_password}
                     name="old_password"
-                    type={!showCurrPassword?"password":"text"}
+                    type={!showCurrPassword ? "password" : "text"}
                     className="outline-none w-[100%] px-[5px]"
                     required
                   />
-                  <div onClick={()=>{setshowCurrPassword(!showCurrPassword)}}><RemoveRedEyeIcon/></div>
+                  <div
+                    onClick={() => {
+                      setshowCurrPassword(!showCurrPassword);
+                    }}
+                  >
+                    <RemoveRedEyeIcon />
+                  </div>
                 </div>
               </div>
               <div className="flex flex-col gap-1 ">
                 <p className="text-[18px] font-medium">New Password</p>
                 <div className="flex justify-between gap-1 border-[1px] border-gray-500 rounded-md p-[5px] bg-white">
                   <input
+                    minLength={5}
                     onChange={detectChange}
                     value={data.newpassword}
                     name="newpassword"
-                    type={!showNewPassword?"password":"text"}
+                    type={!showNewPassword ? "password" : "text"}
                     className="outline-none w-[100%] px-[5px]"
                     required
                   />
-                  <div onClick={()=>{setshowNewPassword(!showNewPassword)}}><RemoveRedEyeIcon/></div>
+                  <div
+                    onClick={() => {
+                      setshowNewPassword(!showNewPassword);
+                    }}
+                  >
+                    <RemoveRedEyeIcon />
+                  </div>
                 </div>
               </div>
               <div className="flex flex-col gap-1 ">
                 <p className="text-[18px] font-medium">Confirm new Password</p>
                 <div className="flex justify-between gap-1 border-[1px] border-gray-500 rounded-md p-[5px] bg-white">
                   <input
+                    minLength={5}
                     onChange={detectChange}
                     value={data.confirmpassword}
                     name="confirmpassword"
-                    type={!showConPassword?"password":"text"}
+                    type={!showConPassword ? "password" : "text"}
                     className="outline-none w-[100%] px-[5px]"
                     required
                   />
-                  <div onClick={()=>{setshowConPassword(!showConPassword)}}><RemoveRedEyeIcon/></div>
+                  <div
+                    onClick={() => {
+                      setshowConPassword(!showConPassword);
+                    }}
+                  >
+                    <RemoveRedEyeIcon />
+                  </div>
                 </div>
               </div>
               <div className="flex justify-end gap-2 pt-2">

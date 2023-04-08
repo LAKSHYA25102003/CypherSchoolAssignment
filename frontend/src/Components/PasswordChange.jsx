@@ -19,6 +19,7 @@ function PasswordChange() {
             <p className="text-[18px] font-medium">Password</p>
             <div className="flex  gap-1 border-[1px] border-gray-500 rounded-md p-[5px] bg-white">
               <input
+              
                 type="password"
                 disabled
                 className="outline-none w-[100%] px-[5px]"

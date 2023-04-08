@@ -88,6 +88,7 @@ const Signup = () => {
                     </label>
                     <input
                       value={user.password}
+                      minLength={5}
                       onChange={detectChange}
                       type="password"
                       name="password"

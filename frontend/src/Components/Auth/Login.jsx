@@ -69,6 +69,7 @@ const Login = () => {
                         Password
                       </label>
                       <input
+                        minLength={5}
                         value={user.password}
                         onChange={detectChange}
                         type="password"
