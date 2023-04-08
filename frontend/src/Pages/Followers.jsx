@@ -25,7 +25,7 @@ function Followers() {
   if (user) {
     return (
       <div className="">
-        <div className="flex   w-[100%] flex-col ">
+        <div className="flex w-[100%] flex-col ">
           <NavBar />
           <div className="flex w-[100%] fixed top-[67px]">
             <div className="hidden md:block">
@@ -33,7 +33,7 @@ function Followers() {
             </div>
             <div className="w-[100%] left-[62px] right-0 bg-[#edf2fa] mb-[10px]">
               <div
-                style={{ height: "calc(100vh - 80px)" }}
+                style={{ height: "calc(100vh - 100px)" }}
                 className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4   overflow-y-auto gap-[40px] p-[10px]"
               >
                 {followers.map((f) => {
