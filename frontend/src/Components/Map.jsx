@@ -38,6 +38,14 @@ function Map() {
             ]}
           />
         </div>
+        <div className="flex justify-end items-center gap-2">
+          <span className="text-18[px] font-medium">More</span>
+          <div className="w-[20px] h-[20px] bg-[#f3912e]"></div>
+          <div className="w-[20px] h-[20px] bg-[#f3902ecf]"></div>
+          <div className="w-[20px] h-[20px] bg-[#f3902e82]"></div>
+          <div className="w-[20px] h-[20px] bg-[#f3902e58]"></div>
+          <span className="text-18[px] font-medium">Less</span>
+        </div>
       </div>
     </div>
   );
