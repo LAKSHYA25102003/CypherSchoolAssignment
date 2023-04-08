@@ -30,12 +30,12 @@ function Profile() {
         <div className="flex  w-[100%] flex-col ">
           <NavBar />
           <div className="flex w-[100%] fixed top-[67px]">
-            <div className="hidden md:block">
-              <SideBar />
+            <div>
+              <SideBar/>
             </div>
-            <div  className="w-[100%] left-[62px] right-0 bg-[#edf2fa]">
+            <div style={{height:"calc(100vh - 65px)"}}  className="w-[100%] left-[62px] right-0 bg-[#edf2fa]">
               <ProfileBox />
-              <div style={{height:"calc(100vh - 167px)"}} className="main-container w-[100%] h-[100%] overflow-y-auto pb-[20px]">
+              <div  className="main-container w-[100%]  overflow-y-auto pb-[20px] h-[70%] min-[1024px]:h-[80%]" >
                 <div className="about-me">
                   <UserAboutme />
                 </div>

@@ -28,33 +28,33 @@ function Followers() {
         <div className="flex w-[100%] flex-col ">
           <NavBar />
           <div className="flex w-[100%] fixed top-[67px]">
-            <div className="hidden md:block">
+            <div>
               <SideBar />
             </div>
-            <div className="w-[100%] left-[62px] right-0 bg-[#edf2fa] mb-[10px]">
-              <div
-                style={{ height: "calc(100vh - 100px)" }}
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4   overflow-y-auto gap-[40px] p-[10px]"
-              >
+            <div
+              style={{ height: "calc(100vh - 65px)" }}
+              className="w-[100%]    bg-[#edf2fa] mb-[10px]"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  h-[80%] min-[1024px]:h-[90%]  overflow-y-auto gap-[40px] p-[10px]">
                 {followers.map((f) => {
                   return <FollowerCard key={f._id} follower={f} />;
                 })}
+                {true && (
+                  <div className=" items-end flex justify-end">
+                    <button
+                      onClick={() => {
+                        dispatch(fetchFollowers(page, followers));
+                      }}
+                      className="bg-[#f3912e] text-[18px] h-[30px] font-medium text-white p-[2px] px-[10px]  rounded-md"
+                    >
+                      Show More
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
-        {followers.length < user.followers.length && (
-          <div className="absolute bottom-0 right-0  p-[10px]">
-            <button
-              onClick={() => {
-                dispatch(fetchFollowers(page, followers));
-              }}
-              className="bg-[#f3912e] text-[18px] font-medium text-white p-[2px] px-[10px] rounded-md"
-            >
-              Show More
-            </button>
-          </div>
-        )}
       </div>
     );
   } else {
