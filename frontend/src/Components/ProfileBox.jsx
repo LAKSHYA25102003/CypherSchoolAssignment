@@ -4,17 +4,24 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 import ProfileEditModal from "./ProfileEditModal";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchFollowers } from "../Redux/user/userAction";
 
 function ProfileBox() {
+  const dispatch = useDispatch();
   const navigate=useNavigate();
   const [modal, setModal] = useState(false);
-  const { user } = useSelector((store) => {
+  const { user,followers,page } = useSelector((store) => {
     return store.user;
   });
+  const handleClick=()=>{
+    navigate("/followers");
+    dispatch(fetchFollowers(page,followers));
+  }
   if (user)
     return (
       <>
-        <div className="w-[100%] flex justify-center md:justify-between items-center p-[10px] px-[40px]  border-b-[2px] border-gray-300">
+        <div className="w-[100%] flex justify-between items-center p-[10px] px-[15px]  md:px-[40px]  border-b-[2px] border-gray-300">
           <div className="flex justify-center items-center gap-[20px]">
             <div className="image relative ">
               <img
@@ -34,13 +41,13 @@ function ProfileBox() {
               <p>{user.email}</p>
             </div>
           </div>
-          <div className="hidden md:block text-[20px] font-medium cursor-pointer" onClick={()=>{navigate("/followers")}}>
+          <div className=" text-[20px] font-medium cursor-pointer" onClick={handleClick}>
             {user.followers.length} followers
           </div>
         </div>
 
         {modal && (
-          <div className="fixed top-0 left-0 w-[100%] h-[100%]  z-50 bg-[#535151a2] flex justify-center item">
+          <div className="fixed top-0 left-0 w-[100%] h-[100%]  z-49 bg-[#535151a2] flex justify-center item">
             <ProfileEditModal user={user}  setModal={setModal} />
           </div>
         )}

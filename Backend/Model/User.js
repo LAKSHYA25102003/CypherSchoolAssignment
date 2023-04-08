@@ -20,13 +20,14 @@ const proffInfoSchema = {
 const User = new mongoose.Schema({
     name:{type:String, required:true},
     email:{type:String, required:true},
+    mobile:{type:Number,required:false},
     password:{type:String, required:true},
     aboutMe:{type:String, required:false},
     onTheWeb:onTheWebSchema,
     proffInfo:proffInfoSchema,
     interest:[{type:String,default:[]}],
-    followers:[{type:mongoose.Schema.Types.ObjectId, default:[]}],
-    followings:[{type:mongoose.Schema.Types.ObjectId, default:[]}],
+    followers:[{type:String, default:[]}], // for demonstration purpose fiver users are followers of every one
+    followings:[{type:String, default:[]}],
     profileImageUrl:{type:String,required:true,default:"uploads/download_default_image.png"}
 })
 

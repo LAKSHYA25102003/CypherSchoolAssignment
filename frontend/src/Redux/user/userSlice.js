@@ -4,6 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
     user:null,
+    page:0,
+    followers:[],
     isLoading:false,
     error:""
 }
@@ -26,6 +28,12 @@ const userSlice=createSlice({
         },
         setField:(state,{payload})=>{
             state.user.interest=payload
+        },
+        setFollowers:(state,{payload})=>{
+            state.followers=payload;
+        },
+        setPage:(state,{payload})=>{
+            state.page=payload;
         }
     }
 
@@ -33,6 +41,6 @@ const userSlice=createSlice({
 
 const {reducer,actions}=userSlice;
 
-export const {fetchUserLoading,fetchUserSuccess,fetchUserFail,setField}=actions;
+export const {fetchUserLoading,fetchUserSuccess,fetchUserFail,setField,setFollowers,setPage}=actions;
 
 export default reducer;

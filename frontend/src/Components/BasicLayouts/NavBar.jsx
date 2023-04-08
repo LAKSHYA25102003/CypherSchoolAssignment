@@ -10,28 +10,27 @@ import showToast from "../../Utils/showToast";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../Redux/user/userAction";
 
-
 const NavBar = () => {
   // Link
 
-  const navigate=useNavigate();
-  const dispatch=useDispatch();
-  const [isdrop, setdrop] = useState(true);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isdrop, setdrop] = useState(false);
 
   const setDrop = (e) => {
     setdrop(!isdrop);
   };
 
-  const logout=(e)=>{
+  const logout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
     navigate("/login");
     showToast({
-      msg:"Successfully logout",
-      type:"success"
-    })
+      msg: "Successfully logout",
+      type: "success",
+    });
     dispatch(updateUser());
-  }
+  };
 
   return (
     <>
@@ -45,36 +44,44 @@ const NavBar = () => {
                 alt=""
               />
             </div>
-            <div className=" ml-2 text-xl font-sans font-semibold">
+            <div className="hidden md:block ml-2 text-xl font-sans font-semibold">
               CipherSchools
             </div>
           </div>
           <div className="flex justify-center items-center md:w-[60%]">
-            <div className="hidden min-[800px]:block ml-10 md:ml-40  text-lg font-medium">
-              <div className="itemname">Home</div>
+            <div className="block ml-10 md:ml-40  text-lg font-medium">
+              <div
+                className="itemname cursor-pointer"
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Home
+              </div>
             </div>
-            <div className="hidden min-[800px]:block ml-4 md:ml-20 text-lg font-medium">
-              <div className="itemname">Creative</div>
+            <div className="block ml-4 md:ml-20 text-lg font-medium">
+              <div
+                className="itemname cursor-pointer"
+                onClick={() => {
+                  navigate("/profile");
+                }}
+              >
+                Profile
+              </div>
             </div>
             {localStorage.getItem("token") === null ? (
               <Link to="/login">
-                <div className="hidden min-[800px]:block ml-4 md:ml-20  text-lg font-medium">
+                <div className="block ml-4 md:ml-20 pr-[10px]  text-lg font-medium">
                   <div className="itemname">Login</div>
                 </div>
               </Link>
             ) : (
-              <div className="hidden min-[800px]:block ml-4 md:ml-20  text-lg font-medium">
-                <div className="itemname cursor-pointer" onClick={logout} >Logout</div>
+              <div className="block ml-4 md:ml-20 pr-[10px]  text-lg font-medium">
+                <div className="itemname cursor-pointer" onClick={logout}>
+                  Logout
+                </div>
               </div>
             )}
-            <div className="flex min-[800px]:hidden fixed right-4">
-              <DropDownOptions setHidden={isdrop} />
-              {isdrop ? (
-                <ArrowDropDownCircleOutlinedIcon onClick={setDrop} />
-              ) : (
-                <CancelOutlinedIcon onClick={setDrop} />
-              )}
-            </div>
           </div>
         </div>
       </div>

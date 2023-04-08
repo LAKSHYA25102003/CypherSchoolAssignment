@@ -56,9 +56,8 @@ const runApp = async () => {
     mongoose.set('strictQuery', false);
 
     // const url = "mongodb+srv://" + process.env.mongo_user + ":" + process.env.mongopass + "@cluster0.ncrzato.mongodb.net/Clone?retryWrites=true&w=majority";
-    // const url = "mongodb://localhost:27017"
-    const url = "mongodb://0.0.0.0:27017/cipher";
-
+    const url = "mongodb://localhost:27017/cipher"
+    // const url = `mongodb+srv://llakshya63:sP6GMVk8DxnrZY9X@cluster0.goacs4i.mongodb.net/?retryWrites=true&w=majority`;
     const connect = await mongoose.connect(url);
     
     const PORT = process.env.PORT || 5000;

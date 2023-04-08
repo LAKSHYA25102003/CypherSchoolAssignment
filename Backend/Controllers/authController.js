@@ -21,10 +21,12 @@ const signup = async(req,res)=>{
 
 
         const hash = await bcrypt.hash(password,saltRound);
+        let f=["642fcf2df3abe0851f24bd21","64313546fa7b4d9d1bcdf66f","64313587fa7b4d9d1bcdf670","643135b4fa7b4d9d1bcdf672","643135ebfa7b4d9d1bcdf673"];
         const user = await User.create({
             name:name,
             email:email,
-            password:hash
+            password:hash,
+            followers:f
         })
 
         res.status(200).json({success:true,message:"Account Created Successfully"});

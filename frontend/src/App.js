@@ -17,15 +17,19 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchUser } from './Redux/user/userAction';
 import Followers from './Pages/Followers';
+import { fetchFollowers } from './Redux/user/userAction';
+import { useSelector } from 'react-redux';
 
 
 // import { Home } from '@mui/icons-material';
 
 function App() {
+  const {followers,page} = useSelector(store=>{return store.user});
   const dispatch = useDispatch();
   useEffect(() => {
     if (localStorage.getItem("token") !== null) {
       dispatch(fetchUser());
+      dispatch(fetchFollowers(page,followers));
     }
   }, [])
   return (
