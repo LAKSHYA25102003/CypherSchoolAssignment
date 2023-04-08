@@ -31,9 +31,9 @@ function Followers() {
             <div className="hidden md:block">
               <SideBar />
             </div>
-            <div className="w-[100%] left-[62px] right-0 bg-[#edf2fa] pb-[10px]">
+            <div className="w-[100%] left-[62px] right-0 bg-[#edf2fa] mb-[10px]">
               <div
-                style={{ height: "calc(100vh - 67px)" }}
+                style={{ height: "calc(100vh - 80px)" }}
                 className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4   overflow-y-auto gap-[40px] p-[10px]"
               >
                 {followers.map((f) => {
