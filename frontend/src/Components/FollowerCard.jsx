@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { followUnfollow } from "../Redux/user/userAction";
 import { useSelector } from "react-redux";
@@ -7,9 +7,13 @@ const avatar = require("../Images/avatar.jpg");
 
 function FollowerCard({ follower }) {
   const dispatch = useDispatch();
+  const [foll,setFoll] = useState(follower.followers.length);
+  
   const { user } = useSelector((store) => {
     return store.user;
   });
+
+  const [following,setFollowing] = useState(user.followings.includes(follower._id));
 
   return (
     <div className="flex flex-col justify-between p-[10px] max-h-[300px]  border-[2px] rounded-[15px] border-gray-400 drop-shadow-md bg-white">
@@ -25,15 +29,15 @@ function FollowerCard({ follower }) {
         {follower.proffInfo.highestEdu !== "None" && (
           <div>{follower.proffInfo.highestEdu}</div>
         )}
-        <div>{follower.followers.length} follwers</div>
+        <div>{foll} follwers</div>
       </div>
       <div className="w-[100%]">
-        {user.followings.includes(follower._id) ? (
-          <button onClick={()=>{dispatch(followUnfollow({friendId:follower._id}))}} className="text-center w-[100%] text-[15px] font-medium text-black border-[2px] border-gray-400 bg-white px-[10px] py-[5px] rounded-[13px]">
+        {following ? (
+          <button onClick={()=>{dispatch(followUnfollow({friendId:follower._id}));setFollowing(!following);setFoll(foll-1)}} className="text-center w-[100%] text-[15px] font-medium text-black border-[2px] border-gray-400 bg-white px-[10px] py-[5px] rounded-[13px]">
             Unfollow
           </button>
         ) : (
-          <button onClick={()=>{dispatch(followUnfollow({friendId:follower._id}))}} className="text-center w-[100%] text-[15px] font-medium text-white bg-[#f3912e] px-[10px] py-[5px] rounded-[13px]">
+          <button onClick={()=>{dispatch(followUnfollow({friendId:follower._id}));setFollowing(!following);setFoll(foll+1)}} className="text-center w-[100%] text-[15px] font-medium text-white bg-[#f3912e] px-[10px] py-[5px] rounded-[13px]">
             Follow
           </button>
         )}

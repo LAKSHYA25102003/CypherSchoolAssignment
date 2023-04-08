@@ -39,7 +39,7 @@ function Followers() {
                 {followers.map((f) => {
                   return <FollowerCard key={f._id} follower={f} />;
                 })}
-                {true && (
+                {user.followers.length>followers.length && (
                   <div className=" items-end flex justify-end">
                     <button
                       onClick={() => {

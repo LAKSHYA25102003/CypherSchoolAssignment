@@ -8,8 +8,10 @@ const Home = () => {
     <div>
       <div className="flex bg-white w-[100%] flex-col">
         <NavBar />
-        <div className="flex top-[67px] fixed  w-[100%]">
+        <div className="top-[67px] left-0 fixed">
           <SideBar />
+        </div>
+        <div className="w-[90%] mx-auto overflow-y-auto min-[1024px]:ml-[67px] flex justify-center items-center">
           <HomeContent />
         </div>
       </div>

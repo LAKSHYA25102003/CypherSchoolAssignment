@@ -6,7 +6,7 @@ import Carousel from '../BasicLayouts/Carousel';
 const HomeContent = () => {
     return (
         <div className="parentComp mb-4 ">
-            <div className="hidden min-[750px]:flex">
+            <div className="hidden  min-[750px]:flex">
                 <div className="left w-[100%]">
                     <h1 className="mainContent ml-6 pt-20 text-[3rem] min-[1024px]:ml-16 font-bold leading-normal  text-ellipsis">
                         Welcome to <span className='text-orange-400'>the Future</span> of Learning!
