@@ -4,6 +4,7 @@ import { loginUser } from "../../Redux/user/userAction";
 import SideBar from "../BasicLayouts/SideBar";
 import { useDispatch } from "react-redux";
 import showToast from "../../Utils/showToast";
+import NavBar from "../BasicLayouts/NavBar";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,20 +22,20 @@ const Login = () => {
     dispatch(loginUser(user, clearUser));
   };
   useEffect(() => {
-    if(localStorage.getItem("token") !== null) {
-        showToast({
-            msg: "Already logged in.",
-            type: "error",
-          });
+    if (localStorage.getItem("token") !== null) {
+      showToast({
+        msg: "Already logged in.",
+        type: "error",
+      });
       navigate("/profile");
     }
   }, []);
   if (localStorage.getItem("token") === null) {
     return (
       <>
-        <div className="flex bg-white">
+        <NavBar />
+        <div className="flex bg-white  ">
           <SideBar />
-
           <section className="w-full">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
               <div className="w-full bg-white rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 border-2 shadow-lg border-cyan-300">
@@ -103,7 +104,7 @@ const Login = () => {
         </div>
       </>
     );
-  } 
+  }
 };
 
 export default Login;

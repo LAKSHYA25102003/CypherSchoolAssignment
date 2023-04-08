@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { createUser } from "../../Redux/user/userAction";
 import { useNavigate } from "react-router-dom";
 import showToast from "../../Utils/showToast";
+import NavBar from "../BasicLayouts/NavBar";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,8 @@ const Signup = () => {
   }, []);
   if (localStorage.getItem("token") === null) {
     return (
+      <>
+      <NavBar/>
       <div className="flex bg-white">
         <SideBar />
         <section class="w-full">
@@ -119,6 +122,7 @@ const Signup = () => {
           </div>
         </section>
       </div>
+      </>
     );
   } 
 };

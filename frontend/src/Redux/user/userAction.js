@@ -1,9 +1,11 @@
 import { fetchUserLoading, fetchUserSuccess, fetchUserFail, setField,setPage,setFollowers } from "./userSlice";
 import showToast from "../../Utils/showToast";
 import axios from "axios"
+import { setLoader } from "../loader/loaderAction";
 
 export const createUser = (user, clearUser) => async (dispatch) => {
     try {
+        dispatch(setLoader(true));
         let result = await fetch(`${process.env.REACT_APP_BASE_URL}/auth/signup`, {
             method: "post",
             headers: {
@@ -19,6 +21,7 @@ export const createUser = (user, clearUser) => async (dispatch) => {
                 type: "success"
             });
         }
+        dispatch(setLoader(false));
 
 
     } catch (error) {
@@ -30,7 +33,7 @@ export const createUser = (user, clearUser) => async (dispatch) => {
 
 export const loginUser = (user, clearUser) => async (dispatch) => {
     try {
-
+        dispatch(setLoader(true));
         let result = await fetch(`${process.env.REACT_APP_BASE_URL}/auth/signin`, {
             method: "post",
             headers: {
@@ -54,6 +57,7 @@ export const loginUser = (user, clearUser) => async (dispatch) => {
                 type: "error"
             });
         }
+        dispatch(setLoader(false));
     } catch (error) {
         console.log(error.message)
 
@@ -61,7 +65,7 @@ export const loginUser = (user, clearUser) => async (dispatch) => {
 }
 
 export const updateUser = () => async (dispatch) => {
-
+    
     try {
         dispatch(fetchUserSuccess(null));
     } catch (error) {
@@ -95,6 +99,7 @@ export const setFieldInterest = ({ user, field, set }) => async (dispatch) => {
 export const updatePassword = (data, setModal) => async (dispatch) => {
 
     try {
+        dispatch(setLoader(true));
         let result = await fetch(`${process.env.REACT_APP_BASE_URL}/auth/changepass`, {
             method: "post",
             headers: {
@@ -119,6 +124,7 @@ export const updatePassword = (data, setModal) => async (dispatch) => {
                 type: "error"
             })
         }
+        dispatch(setLoader(false));
     } catch (error) {
         console.log(error.message)
         dispatch(fetchUserFail(error.message))
@@ -152,6 +158,7 @@ export const fetchUser = () => async (dispatch) => {
 
 export const fetchFollowers = (page,followers) => async (dispatch) => {
     try {
+        dispatch(setLoader(true));
         let result = await fetch(`${process.env.REACT_APP_BASE_URL}/user/getFollowers`, {
             method: "post",
             headers: {
@@ -172,6 +179,7 @@ export const fetchFollowers = (page,followers) => async (dispatch) => {
             }
             dispatch(setFollowers(nf));
         }
+        dispatch(setLoader(false));
     } catch (error) {
         console.log(error.message)
     }
@@ -182,6 +190,7 @@ export const fetchFollowers = (page,followers) => async (dispatch) => {
 
 export const updateDetails = (data, setModal = "") => async (dispatch) => {
     try {
+        dispatch(setLoader(true));
         dispatch(fetchUserLoading());
         let result = await fetch(`${process.env.REACT_APP_BASE_URL}/user/updateinfo`, {
             method: "post",
@@ -207,6 +216,7 @@ export const updateDetails = (data, setModal = "") => async (dispatch) => {
 
             dispatch(fetchUserFail(response.message));
         }
+        dispatch(setLoader(false));
 
     } catch (error) {
         console.log(error.message)
@@ -259,6 +269,7 @@ export const updateProfilePic = (file, data,setModal) => async (dispatch) => {
 
 export const followUnfollow = ({friendId}) => async (dispatch) => {
     try {
+        dispatch(setLoader(true));
         let result = await fetch(`${process.env.REACT_APP_BASE_URL}/user/followUnfollow`, {
             method: "post",
             headers: {
@@ -271,6 +282,7 @@ export const followUnfollow = ({friendId}) => async (dispatch) => {
         if (response.success) {
             dispatch(fetchUserSuccess(response.user))
         }
+        dispatch(setLoader(false));
     } catch (error) {
         console.log(error.message)
     }

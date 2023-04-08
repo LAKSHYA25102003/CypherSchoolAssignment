@@ -7,12 +7,15 @@ import HomeContent from "../Home/HomeContent";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import showToast from "../../Utils/showToast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../Redux/user/userAction";
+import { LinearProgress } from "@mui/material";
 
 const NavBar = () => {
   // Link
-
+  const { loader } = useSelector((store) => {
+    return store.loader;
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isdrop, setdrop] = useState(false);
@@ -34,7 +37,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="sticky top-0 flex   bg-white ">
+      <div className="sticky top-0 flex flex-col  bg-white ">
         <div className="flex justify-between items-center  shadow-md  w-screen py-[15px]">
           <div className="flex  items-center ml-4 md:ml-20">
             <div>
@@ -84,6 +87,7 @@ const NavBar = () => {
             )}
           </div>
         </div>
+        <div>{loader && <LinearProgress color="primary" />}</div>
       </div>
     </>
   );
