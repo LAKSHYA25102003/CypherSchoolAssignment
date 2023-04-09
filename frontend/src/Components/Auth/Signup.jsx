@@ -33,14 +33,14 @@ const Signup = () => {
   }, []);
   if (localStorage.getItem("token") === null) {
     return (
-      <>
+      <div className="w-[100%]">
       <NavBar/>
-      <div className="flex bg-white">
+      <div className="flex  fixed top-[67px] bg-white w-[100%]">
         <SideBar />
-        <section class="w-full">
-          <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
-            <div class="w-full bg-white rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 border-2 shadow-lg border-cyan-300">
-              <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <section class="w-[100%] min-[1024px]:w-[95%]">
+          <div class="flex  items-center  justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
+            <div class="w-[100%] mb-[67px] bg-white rounded-lg dark:border  sm:max-w-md xl:p-0 border-2 shadow-lg border-cyan-300">
+              <div class="p-6  space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-black">
                   Create New Account.
                 </h1>
@@ -122,7 +122,7 @@ const Signup = () => {
           </div>
         </section>
       </div>
-      </>
+      </div>
     );
   } 
 };

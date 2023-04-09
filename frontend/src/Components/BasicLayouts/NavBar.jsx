@@ -38,7 +38,7 @@ const NavBar = () => {
   return (
     <>
       <div className="sticky top-0 flex flex-col  bg-white ">
-        <div className="flex justify-between items-center  shadow-md  w-screen py-[15px]">
+        <div className="flex justify-between items-center  shadow-md  w-[100%] py-[15px]">
           <div className="flex  items-center ml-4 md:ml-20">
             <div>
               <img

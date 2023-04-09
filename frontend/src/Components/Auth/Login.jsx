@@ -34,11 +34,11 @@ const Login = () => {
     return (
       <>
         <NavBar />
-        <div className="flex bg-white  ">
+        <div className="flex bg-white  w-[100%] fixed top-[67px] ">
           <SideBar />
-          <section className="w-full">
-            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
-              <div className="w-full bg-white rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 border-2 shadow-lg border-cyan-300">
+          <section className="w-[100%] min-[1024px]:w-[95%]">
+            <div className="flex  items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
+              <div className="w-[100%] mb-[67px] bg-white rounded-lg dark:border  sm:max-w-md xl:p-0 border-2 shadow-lg border-cyan-300">
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                   <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-black">
                     Sign in to your account
