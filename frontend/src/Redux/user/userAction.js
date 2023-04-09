@@ -228,6 +228,7 @@ export const updateDetails = (data, setModal = "") => async (dispatch) => {
 
 export const updateProfilePic = (file, data,setModal) => async (dispatch) => {
     try {
+        dispatch(setLoader(true));
         if (file !== null) {
             let formData = new FormData();
             formData.append("profilepic", file);
@@ -243,6 +244,7 @@ export const updateProfilePic = (file, data,setModal) => async (dispatch) => {
 
             console.log({ response })
         }
+        dispatch(setLoader(false));
         dispatch(updateDetails(data,setModal));
         // if (response.success) {
         //     if(setModal!=="")
